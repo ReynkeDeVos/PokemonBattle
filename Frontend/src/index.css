@@ -69,6 +69,38 @@
     }
   }
 
+  /* Slow slide-down animation with physics bounce for winner modal */
+  --animate-slide-down-slow: slide-down-slow 2.2s ease-out;
+
+  @keyframes slide-down-slow {
+    0% {
+      opacity: 0;
+      transform: translateY(-100vh);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(15px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+
+  /* Backdrop fade-in animation */
+  --animate-backdrop-fade: backdrop-fade 0.8s ease-out;
+
+  @keyframes backdrop-fade {
+    from {
+      opacity: 0;
+      backdrop-filter: blur(0);
+    }
+    to {
+      opacity: 1;
+      backdrop-filter: blur(12px);
+    }
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;

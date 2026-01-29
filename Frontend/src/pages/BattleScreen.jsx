@@ -348,13 +348,13 @@ export default function BattleScreen() {
               numberOfPieces={300}
               colors={['#FFD700', '#FFA500', '#FF6347', '#00CED1', '#9370DB', '#32CD32']}
             />
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-md">
+            <div className="fixed inset-0 z-50 flex animate-backdrop-fade items-center justify-center bg-black/70 p-4 backdrop-blur-md">
               {/* Animated glow background */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="h-96 w-96 animate-pulse rounded-full bg-yellow-400/20 blur-3xl" />
               </div>
 
-              <div className="relative w-full max-w-sm animate-[slide-up_0.5s_ease-out] sm:max-w-md">
+              <div className="relative w-full max-w-sm animate-slide-down-slow sm:max-w-md">
                 {/* Decorative top banner */}
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 transform">
                   <div className="rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 px-8 py-2 shadow-lg">
