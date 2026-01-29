@@ -1,73 +1,61 @@
-# 🌟 Pokémon Battler README 🌟
+# PokeBattler
 
-## 🌐 Live Site
+A Pokémon battle game where you pick your fighter, spam the attack button, and hope RNG is on your side.
 
-The server is deployed and can then be accessed at [PokeBattler](https://pokebattler.netlify.app/).
+## Live Site
 
-## 🎥 Video Showcase
+**[Play PokeBattler](https://pokebattler.netlify.app/)**
+
+*Note: The backend is hosted on Render's free tier, so the first load might take ~30 seconds while Pikachu wakes up the server.*
+
+## Video Showcase
 
 ![Video Showcase](./Frontend/src/assets/videos/pokebattle.avif)
 
-## 🚀 Gotta Code 'Em All - Backend!
+## Tech Stack
 
-Welcome to the wild world of our game's backend, located in the `Backend/` directory. This is where all the magic happens! Our trusty Node.js uses Express as its Poké Ball to catch all the requests. MongoDB is our Pokédex, storing all the Pokémon data, and Mongoose is our trusty companion, helping us model our Pokémon world.
+**Frontend:** React 19, Tailwind CSS 4, DaisyUI 5, Vite  
+**Backend:** Node.js, Express 5  
+**Deployed:** Netlify (frontend) + Render (backend)
 
-### Main Dependencies:
-
-- **Axios**: Like a Pokéflute, it wakes up those HTTP requests.
-- **Cors**: It's like a HM01 Cut, making sure we can go through different origins.
-- **Express**: Our Pokémon Trainer that handles all the server action.
-- **Mongoose**: For when we need to evolve our database schemas.
-
-### What's Inside:
-
-- Routes: These are the paths you'll take on your journey.
-- Controllers: They're like Gym Leaders, directing the flow of the game.
-- Models: The blueprints for all the Pokémon you'll encounter.
-
-## 🎨 Frontend: Where the Magic Happens!
-
-Step into the `Frontend/` directory, where our React app is like a Pokémon Center, healing and managing our user interface. Vite is our Elite Four champion, ensuring everything builds super fast.
-
-### Main Dependencies:
-
-- **React**: It's like our Poké Ball factory, creating all the UI components.
-- **Vite**: The speedy bicycle of our build tools.
-
-### What's Inside:
-
-- Pages & Components: The various towns and cities you'll explore.
-- Context Providers: They're like HMs, giving our components special abilities.
-- Tailwind CSS & DaisyUI: Our fashion designers, making sure our app looks sharp.
-
-## 🎮 Running the Project
-
-To run the backend, navigate to the `Backend/` directory and run:
+## Running Locally
 
 ```sh
-npm i
-npm run dev
-# Or, using pnpm
-pnpm i
-pnpm run dev
-# Or, using bun
+# Backend
+cd Backend
+bun install
+bun run dev
+
+# Frontend (in another terminal)
+cd Frontend
 bun install
 bun run dev
 ```
 
-To run the frontend, navigate to the Frontend/ directory and run:
+Works with npm/pnpm too if you're old school.
 
-```sh
-npm i
-npm run dev
-# Or, using pnpm
-pnpm i
-pnpm run dev
-# Or, using bun
-bun install
-bun run dev
+## Project Structure
+
+```
+Backend/
+├── controllers/   # Handles the requests
+├── routes/        # API endpoints
+├── models/        # Data stuff
+└── app.js         # Express server
+
+Frontend/
+├── pages/         # Login, Arena, Battle, Pokedex
+├── components/    # Pokemon cards, images
+└── context/       # Global state (who's fighting who)
 ```
 
-Now, you’re all set to embark on your Pokémon adventure!
+## How It Works
 
-Feel free to tweak it further to match the spirit of your game. Have fun! 🎉
+1. Enter your trainer name
+2. Pick a Pokémon (or get a random one)
+3. Pick an opponent (or get a random one)  
+4. Mash that Attack button
+5. Watch HP bars go down
+6. Confetti if you win
+
+That's it. It's not complicated. It's Pokémon.
