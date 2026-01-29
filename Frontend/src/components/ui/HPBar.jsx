@@ -56,7 +56,7 @@ export default function HPBar({ currentHP, maxHP, showLabel = true, size = 'md' 
       )}
       {/* Retro Gameboy-style HP bar */}
       <div
-        className={`${s.barWidth} border-2 border-black bg-[#303030] p-[2px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]`}
+        className={`${s.barWidth} border-2 border-black bg-[#303030] p-0.5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]`}
         style={{ imageRendering: 'pixelated' }}>
         <div className={`${s.bar} w-full bg-[#181818]`}>
           <div

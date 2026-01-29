@@ -307,10 +307,10 @@ export default function BattleScreen() {
 
           {/* Mobile Pokemon Cards - shown only on smaller screens */}
           <div className="mt-2 flex justify-center gap-2 lg:hidden">
-            <div className="max-w-[180px] flex-1">
+            <div className="max-w-45 flex-1">
               <PokemonCard pokemonId={playerPokemon.id} size="sm" showStats={false} />
             </div>
-            <div className="max-w-[180px] flex-1">
+            <div className="max-w-45 flex-1">
               <PokemonCard pokemonId={opponentPokemon.id} size="sm" showStats={false} />
             </div>
           </div>

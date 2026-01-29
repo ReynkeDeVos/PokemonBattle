@@ -113,7 +113,7 @@ export default function Login() {
         </div>
       ) : (
         /* Login Form */
-        <GlassCard className="w-full max-w-xs animate-[slide-up_0.3s_ease-out] sm:max-w-sm" padding="lg">
+        <GlassCard className="animate-slide-up w-full max-w-xs sm:max-w-sm" padding="lg">
           <h2 className="mb-6 text-center text-xl font-bold text-gray-900 sm:text-2xl md:text-3xl">
             Welcome
             <br />
