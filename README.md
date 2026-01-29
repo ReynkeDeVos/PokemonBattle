@@ -26,13 +26,11 @@ cd Backend
 bun install
 bun run dev
 
-# Frontend (in another terminal)
+# Frontend
 cd Frontend
 bun install
 bun run dev
 ```
-
-Works with npm/pnpm too if you're old school.
 
 ## Project Structure
 
