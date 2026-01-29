@@ -8,8 +8,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { PokemonContext } from '../context/PokemonContext';
-import { StatBar, TypeBadge } from './ui';
 import { GetPokemonCry, GetPokemonImage } from './GetPokemonImages';
+import { StatBar, TypeBadge } from './ui';
 
 /**
  * Pokemon Card component - displays a Pokemon with its image, type, and stats
