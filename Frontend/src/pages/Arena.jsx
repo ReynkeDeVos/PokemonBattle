@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState, useCallback } from 'react';
-import { PokemonContext } from '../context/PokemonContext';
-import PokemonCard from '../components/PokemonCard';
-import { GetPokemonBackGIF, GetPokemonFrontGIF } from '../components/GetPokemonImages';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AshKetchum from '../assets/images/Ash_Ketchum.png';
 import Stadium from '../assets/images/stadium1.png';
+import { GetPokemonBackGIF, GetPokemonFrontGIF } from '../components/GetPokemonImages';
+import PokemonCard from '../components/PokemonCard';
+import { PokemonContext } from '../context/PokemonContext';
 
 function Arena() {
   const { username, setOpponentPokemonId, pokemonData, opponentPokemonId, setPlayerPokemonId, playerPokemonId } =
@@ -63,7 +63,7 @@ function Arena() {
     <>
       <div className="mt-10 flex flex-row justify-between bg-red-400">
         {/* PokeBall */}
-        <div className="w-96 -rotate-12 scale-100 transform cursor-pointer transition-transform hover:scale-105">
+        <div className="w-96 scale-100 -rotate-12 transform cursor-pointer transition-transform hover:scale-105">
           <img
             className=""
             onClick={() => document.getElementById('my_modal_5').showModal()}
@@ -80,7 +80,7 @@ function Arena() {
         <div className="flex size-40 flex-row justify-start"></div>
 
         {/* Welcome Player's name box */}
-        <div className="absolute top-0 col-span-2 col-start-2 mx-32 w-64 rounded bg-white bg-opacity-30 p-6 px-10 backdrop-blur-md">
+        <div className="absolute top-0 col-span-2 col-start-2 mx-32 w-64 rounded bg-white/30 p-6 px-10 backdrop-blur-md">
           <h1 className="text-center text-3xl font-bold text-black">
             Welcome <br /> {username}
           </h1>
@@ -131,7 +131,7 @@ function Arena() {
         {/* Fight Button */}
         <button
           onClick={startBattle}
-          className="btn btn-primary absolute bottom-[12%] left-[50%] -translate-x-[50%] transform whitespace-nowrap border-4 border-black bg-red-500 px-16 py-8 font-pixel text-4xl text-white shadow-lg">
+          className="btn btn-primary font-pixel absolute bottom-[12%] left-[50%] -translate-x-[50%] transform border-4 border-black bg-red-500 px-16 py-8 text-4xl whitespace-nowrap text-white shadow-lg">
           <div className="flex h-full w-full items-center justify-center">Fight!</div>
         </button>
       </div>

@@ -1,21 +1,22 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useState, useContext, useRef } from 'react';
-import { GetPokemonBackGIF, GetPokemonFrontGIF } from '../components/GetPokemonImages';
-import { PokemonContext } from '../context/PokemonContext';
-import PokemonCard from '../components/PokemonCard';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Confetti from 'react-confetti';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Arrow from '../assets/icons/arrow.png';
+import HeartIcon from '../assets/icons/heart.svg';
+import AshKetchum from '../assets/images/Ash_Ketchum.png';
 // Images
 import Stadium from '../assets/images/stadium1.png';
-import AshKetchum from '../assets/images/Ash_Ketchum.png';
-import HeartIcon from '../assets/icons/heart.svg';
-import Arrow from '../assets/icons/arrow.png';
 import Winner from '../assets/images/Winner.png';
+import { GetPokemonBackGIF, GetPokemonFrontGIF } from '../components/GetPokemonImages';
+import PokemonCard from '../components/PokemonCard';
+import { PokemonContext } from '../context/PokemonContext';
 export default function BattleScreen() {
   const location = useLocation();
   const navigate = useNavigate();
   const { playerPokemonId, opponentPokemonId } = location.state || {};
   const { pokemonData, setPlayerPokemonId, setOpponentPokemonId } = useContext(PokemonContext);
   const [playerPokemonBackGif, setPlayerPokemonBackGif] = useState('');
+  const [playerPokemonFrontGif, setPlayerPokemonFrontGif] = useState('');
   const [opponentPokemonFrontGif, setOpponentPokemonFrontGif] = useState('');
   const [playerPokemon, setPlayerPokemon] = useState(null);
   const [opponentPokemon, setOpponentPokemon] = useState(null);
@@ -101,8 +102,10 @@ export default function BattleScreen() {
           setOpponentHP(opponentData.base.HP);
         }
         const playerBackGif = await GetPokemonBackGIF(playerPokemonId);
+        const playerFrontGif = await GetPokemonFrontGIF(playerPokemonId);
         const opponentFrontGif = await GetPokemonFrontGIF(opponentPokemonId);
         setPlayerPokemonBackGif(playerBackGif);
+        setPlayerPokemonFrontGif(playerFrontGif);
         setOpponentPokemonFrontGif(opponentFrontGif);
         const playerSpeed = playerData.base.Speed;
         const opponentSpeed = opponentData.base.Speed;
@@ -151,14 +154,14 @@ export default function BattleScreen() {
       }}>
       {/* Player's Turn Indicator */}
       {currentTurn === 'player' && (
-        <div className="absolute left-[32%] top-[6%]">
+        <div className="absolute top-[6%] left-[32%]">
           <img src={Arrow} alt="Player's Turn" className="h-40 w-40" />
         </div>
       )}
 
       {/* Opponent's Turn Indicator */}
       {currentTurn === 'opponent' && (
-        <div className="absolute right-[38%] top-[6%]">
+        <div className="absolute top-[6%] right-[38%]">
           <img src={Arrow} alt="Opponent's Turn" className="h-40 w-40" />
         </div>
       )}
@@ -247,15 +250,13 @@ export default function BattleScreen() {
       {/* Fight Button */}
       <button
         onClick={handleFight}
-        className="btn btn-primary absolute bottom-[12%] left-[50%] -translate-x-[50%] transform whitespace-nowrap border-4 border-black bg-red-500 px-16 py-8 font-pixel text-4xl text-white shadow-lg">
+        className="btn btn-primary font-pixel absolute bottom-[12%] left-[50%] -translate-x-[50%] transform border-4 border-black bg-red-500 px-16 py-8 text-4xl whitespace-nowrap text-white shadow-lg">
         <div className="flex h-full w-full items-center justify-center">Attack!</div>
       </button>
       {/* Ash Ketchum Image */}
       <img src={AshKetchum} alt="Ash Ketchum" className="absolute bottom-0 left-[20%] h-96 w-96" />
       {/* Fight Log */}
-      <div
-        className="absolute bottom-0 h-56 w-1/5 overflow-y-scroll bg-white bg-opacity-80 p-2 text-black"
-        ref={logRef}>
+      <div className="absolute bottom-0 h-56 w-1/5 overflow-y-scroll bg-white/80 p-2 text-black" ref={logRef}>
         {fightLog.map((log, index) => (
           <p key={index} className="text-xs" dangerouslySetInnerHTML={{ __html: log }} />
         ))}
@@ -264,15 +265,15 @@ export default function BattleScreen() {
       {winner && (
         <>
           <Confetti width={window.innerWidth} height={window.innerHeight} />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="rounded-lg bg-white p-10 text-center shadow-lg">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+            <div className="rounded-lg bg-white p-10 text-center text-gray-900 shadow-lg">
               {/* Winner Image */}
               <img src={Winner} alt="Winner" className="mx-auto mb-4 h-auto w-48" />{' '}
               {/* Adjust the size here if needed */}
-              <h2 className="text-2xl font-bold">{winner} Wins!</h2>
+              <h2 className="text-2xl font-bold text-gray-900">{winner} Wins!</h2>
               <div className="flex justify-center">
                 <img
-                  src={winner === playerPokemon.name.english ? playerPokemonBackGif : opponentPokemonFrontGif}
+                  src={winner === playerPokemon.name.english ? playerPokemonFrontGif : opponentPokemonFrontGif}
                   alt="Winning Pokemon"
                   className="my-4 h-36 w-auto"
                 />

@@ -1,3 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@theme {
+  /* Custom scale values */
+  --scale-40: 0.4;
+  --scale-50: 0.5;
+
+  /* Custom font family */
+  --font-pixel: 'Press Start 2P', cursive;
+
+  /* Custom shake animation */
+  --animate-shake: shake 0.5s ease-in-out;
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-10px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(10px);
+    }
+  }
+}

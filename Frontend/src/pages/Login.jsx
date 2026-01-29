@@ -1,10 +1,10 @@
-import { PokemonContext } from '../context/PokemonContext';
-import { useForm } from 'react-hook-form';
 import { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { usePokemonList } from '../components/GetPokemonData'; // Use only fetchPokemonList
 import PikachuRunning from '../assets/icons/pikachu_running.gif';
 import Wallpaper from '../assets/images/wallpaper2.jpg';
+import { usePokemonList } from '../components/GetPokemonData'; // Use only fetchPokemonList
+import { PokemonContext } from '../context/PokemonContext';
 
 export default function Login() {
   const {
@@ -76,7 +76,7 @@ export default function Login() {
           <div className="relative h-8 w-full max-w-lg overflow-hidden rounded-md bg-gray-300">
             {/* Progress Bar */}
             <div
-              className="absolute left-0 top-0 h-full bg-blue-500"
+              className="absolute top-0 left-0 h-full bg-blue-500"
               style={{ width: `${progress}%` }} // Width of the progress bar
             />
             {/* Pikachu Running */}
@@ -98,14 +98,14 @@ export default function Login() {
           )}
         </div>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-80 rounded bg-white bg-opacity-30 p-10 backdrop-blur-md">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-80 rounded bg-white/30 p-10 backdrop-blur-md">
           <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
             Welcome <br />
             {username ? username : 'Trainer'}!
           </h2>
           <div className="mb-4">
             <input
-              className={`input input-bordered mt-1 w-full border-gray-300 bg-gray-100 text-gray-700 placeholder-gray-500 placeholder-opacity-50 ${
+              className={`input input-bordered mt-1 w-full border-gray-300 bg-gray-100 text-gray-700 placeholder:text-gray-500/50 ${
                 errors.username && 'animate-shake'
               }`}
               {...register('username', { required: true })}

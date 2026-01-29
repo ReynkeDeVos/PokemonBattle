@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { PokemonContext } from '../context/PokemonContext';
 import PokemonCard from '../components/PokemonCard';
-import 'daisyui/dist/full.css';
+import { PokemonContext } from '../context/PokemonContext';
 
 function Pokedex() {
   const { pokemonData, setPlayerPokemonId, setOpponentPokemonId } = useContext(PokemonContext);

@@ -1,15 +1,15 @@
-import { useState, useEffect, useContext } from 'react';
-import { GetPokemonImage } from './GetPokemonImages';
-import { PokemonContext } from '../context/PokemonContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faHeartbeat,
-  faShieldAlt,
   faFistRaised,
+  faHeartbeat,
   faMeteor,
+  faShieldAlt,
   faShieldVirus,
   faTachometerAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useContext, useEffect, useState } from 'react';
+import { PokemonContext } from '../context/PokemonContext';
+import { GetPokemonImage } from './GetPokemonImages';
 
 const PokemonCard = ({ pokemonId, onClick }) => {
   const { pokemonData } = useContext(PokemonContext);
