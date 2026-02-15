@@ -338,9 +338,10 @@ export default function BattleScreen() {
           <img src={AshKetchum} alt="Ash Ketchum" className="h-80 w-auto object-contain xl:h-96" />
         </div>
 
-        {/* Winner Modal - Fancy celebration */}
+        {/* Winner Modal - Retro SNES Victory Screen */}
         {winner && (
           <>
+            {/* Confetti behind the modal */}
             <Confetti
               width={windowSize.width}
               height={windowSize.height}
@@ -348,73 +349,121 @@ export default function BattleScreen() {
               numberOfPieces={300}
               colors={['#FFD700', '#FFA500', '#FF6347', '#00CED1', '#9370DB', '#32CD32']}
             />
+
+            {/* Dark backdrop with blur */}
             <div className="fixed inset-0 z-50 flex animate-backdrop-fade items-center justify-center bg-black/70 p-4 backdrop-blur-md">
-              {/* Animated glow background */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-96 w-96 animate-pulse rounded-full bg-yellow-400/20 blur-3xl" />
-              </div>
 
               <div className="relative w-full max-w-sm animate-slide-down-slow sm:max-w-md">
-                {/* Decorative top banner */}
-                <div className="absolute -top-6 left-1/2 -translate-x-1/2 transform">
-                  <div className="rounded-full bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 px-8 py-2 shadow-lg">
-                    <span className="font-pixel text-sm text-white drop-shadow-lg sm:text-base">VICTORY!</span>
-                  </div>
-                </div>
 
-                {/* Main card */}
-                <div className="overflow-hidden rounded-3xl border-4 border-yellow-400 bg-linear-to-b from-slate-800 via-slate-900 to-black p-6 shadow-[0_0_60px_rgba(255,215,0,0.3)] sm:p-8">
-                  {/* Trophy/Winner image with glow */}
-                  <div className="relative mx-auto mb-4 w-fit">
-                    <div className="absolute inset-0 animate-pulse rounded-full bg-yellow-400/30 blur-xl" />
+                {/* Main retro card - sharp edges, hard shadow, pixel border */}
+                <div
+                  className="relative overflow-hidden border-4 border-white bg-[#0f0f2d] p-6 sm:p-8"
+                  style={{ boxShadow: '6px 6px 0px 0px rgba(0,0,0,1), -2px -2px 0px 0px rgba(80,80,120,0.5)' }}
+                >
+                  {/* CRT Scanline overlay */}
+                  <div
+                    className="pointer-events-none absolute inset-0 z-10 opacity-[0.07]"
+                    style={{
+                      backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.8) 2px, rgba(0,0,0,0.8) 4px)',
+                    }}
+                  />
+
+                  {/* Inner pixel border accent */}
+                  <div className="pointer-events-none absolute inset-2 border-2 border-yellow-400/60" />
+
+                  {/* VICTORY! header - pixel font, solid yellow, no gradient */}
+                  <div className="relative z-20 mb-2 text-center">
+                    <div className="inline-block overflow-hidden animate-retro-reveal">
+                      <h1 className="font-pixel text-xl text-yellow-400 sm:text-2xl md:text-3xl"
+                        style={{ textShadow: '2px 2px 0px #b8860b, 4px 4px 0px rgba(0,0,0,0.8)' }}
+                      >
+                        VICTORY!
+                      </h1>
+                    </div>
+                  </div>
+
+                  {/* Decorative pixel divider */}
+                  <div className="relative z-20 mx-auto mb-4 flex items-center justify-center gap-1">
+                    <div className="h-1 w-4 bg-yellow-400" />
+                    <div className="h-1 w-2 bg-white" />
+                    <div className="h-1 w-8 bg-yellow-400" />
+                    <div className="h-1 w-2 bg-white" />
+                    <div className="h-1 w-4 bg-yellow-400" />
+                  </div>
+
+                  {/* Trophy image - pixelated rendering */}
+                  <div className="relative z-20 mx-auto mb-3 w-fit">
                     <img
                       src={Winner}
                       alt="Winner!"
-                      className="relative mx-auto h-auto w-28 drop-shadow-[0_0_15px_rgba(255,215,0,0.8)] sm:w-36"
+                      className="relative mx-auto h-auto w-24 sm:w-28"
+                      style={{ imageRendering: 'pixelated' }}
                     />
                   </div>
 
-                  {/* Winner name with golden text */}
-                  <h2 className="mb-2 bg-linear-to-r from-yellow-300 via-yellow-400 to-orange-400 bg-clip-text text-center text-2xl font-extrabold text-transparent sm:text-3xl md:text-4xl">
+                  {/* Winner name - pixel font, solid white */}
+                  <h2
+                    className="relative z-20 mb-1 text-center font-pixel text-lg text-white sm:text-xl md:text-2xl"
+                    style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.8)' }}
+                  >
                     {winner}
                   </h2>
-                  <p className="mb-4 text-center text-lg font-bold text-yellow-400 sm:text-xl">WINS THE BATTLE!</p>
+                  <p
+                    className="relative z-20 mb-4 text-center font-pixel text-xs text-yellow-400 sm:text-sm"
+                    style={{ textShadow: '1px 1px 0px rgba(0,0,0,0.8)' }}
+                  >
+                    WINS THE BATTLE!
+                  </p>
 
-                  {/* Pokemon showcase with spotlight effect */}
-                  <div className="relative my-6 flex justify-center">
-                    <div className="absolute inset-0 bg-linear-to-t from-yellow-400/10 to-transparent" />
+                  {/* Pokemon sprite showcase - pixelated, bouncing */}
+                  <div className="relative z-20 my-4 flex justify-center">
                     <div className="relative">
-                      <div className="absolute -inset-4 animate-pulse rounded-full bg-yellow-400/20 blur-lg" />
                       <img
                         src={winner === playerPokemon.name.english ? playerPokemonFrontGif : opponentPokemonFrontGif}
                         alt={winner}
-                        className="relative h-32 w-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.5)] sm:h-40"
+                        className="h-32 w-auto animate-retro-bounce sm:h-40"
+                        style={{ imageRendering: 'pixelated', transform: 'scale(1.2)' }}
                       />
                     </div>
                   </div>
 
-                  {/* Fancy button */}
-                  <button
-                    onClick={returnToArena}
-                    className="group relative w-full cursor-pointer overflow-hidden rounded-xl bg-linear-to-r from-yellow-400 via-orange-500 to-red-500 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,165,0,0.5)] sm:text-xl">
-                    <span className="relative z-10">Back to Arena</span>
-                    <div className="absolute inset-0 bg-linear-to-r from-yellow-300 via-orange-400 to-red-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  </button>
+                  {/* Pixel divider before button */}
+                  <div className="relative z-20 mx-auto mb-4 flex items-center justify-center gap-1">
+                    <div className="h-1 w-4 bg-yellow-400" />
+                    <div className="h-1 w-2 bg-white" />
+                    <div className="h-1 w-8 bg-yellow-400" />
+                    <div className="h-1 w-2 bg-white" />
+                    <div className="h-1 w-4 bg-yellow-400" />
+                  </div>
+
+                  {/* Retro button using PixelButton component */}
+                  <div className="relative z-20">
+                    <PixelButton
+                      onClick={returnToArena}
+                      variant="primary"
+                      size="md"
+                      className="w-full"
+                    >
+                      <span className="animate-text-blink">{'>'}</span>
+                      &nbsp;BACK TO ARENA&nbsp;
+                      <span className="animate-text-blink">{'<'}</span>
+                    </PixelButton>
+                  </div>
                 </div>
 
-                {/* Decorative sparkles */}
-                <div className="absolute top-1/4 -left-4 h-3 w-3 animate-ping rounded-full bg-yellow-400" />
+                {/* Pixel sparkle decorations at corners */}
+                <div className="absolute -top-2 -left-2 h-2 w-2 animate-pixel-sparkle bg-yellow-400" />
                 <div
-                  className="absolute top-1/3 -right-4 h-2 w-2 animate-ping rounded-full bg-orange-400"
-                  style={{ animationDelay: '0.5s' }}
+                  className="absolute -top-2 -right-2 h-2 w-2 animate-pixel-sparkle bg-white"
+                  style={{ animationDelay: '0.3s' }}
                 />
                 <div
-                  className="absolute bottom-1/4 -left-2 h-2 w-2 animate-ping rounded-full bg-red-400"
-                  style={{ animationDelay: '1s' }}
+                  className="absolute -bottom-2 -left-2 h-2 w-2 animate-pixel-sparkle bg-white"
+                  style={{ animationDelay: '0.6s' }}
                 />
                 <div
-                  className="absolute -right-3 bottom-1/3 h-3 w-3 animate-ping rounded-full bg-yellow-300"
-                  style={{ animationDelay: '0.7s' }}
+                  className="absolute -bottom-2 -right-2 h-2 w-2 animate-pixel-sparkle bg-yellow-400"
+                  style={{ animationDelay: '0.9s' }}
                 />
               </div>
             </div>
