@@ -69,35 +69,101 @@
     }
   }
 
-  /* Slow slide-down animation with physics bounce for winner modal */
-  --animate-slide-down-slow: slide-down-slow 2.2s ease-out;
+  /* RETRO SNES - Smooth slide-down for winner modal */
+  --animate-slide-down-slow: retro-slide-down 1s ease-out forwards;
 
-  @keyframes slide-down-slow {
+  @keyframes retro-slide-down {
     0% {
       opacity: 0;
-      transform: translateY(-100vh);
+      transform: translateY(-80%);
     }
     60% {
       opacity: 1;
-      transform: translateY(15px);
+      transform: translateY(6px);
     }
     100% {
+      opacity: 1;
       transform: translateY(0);
     }
   }
 
+  /* RETRO SNES - Backdrop fade */
+  --animate-backdrop-fade: retro-backdrop-fade 0.6s ease-out forwards;
 
-  /* Backdrop fade-in animation */
-  --animate-backdrop-fade: backdrop-fade 0.8s ease-out;
-
-  @keyframes backdrop-fade {
+  @keyframes retro-backdrop-fade {
     from {
       opacity: 0;
-      backdrop-filter: blur(0);
     }
     to {
       opacity: 1;
-      backdrop-filter: blur(12px);
+    }
+  }
+
+  /* RETRO SNES - Screen flash before victory */
+  --animate-screen-flash: screen-flash 0.5s steps(3) forwards;
+
+  @keyframes screen-flash {
+    0% {
+      opacity: 1;
+      background-color: white;
+    }
+    33% {
+      opacity: 1;
+      background-color: white;
+    }
+    66% {
+      opacity: 0.5;
+      background-color: white;
+    }
+    100% {
+      opacity: 0;
+      background-color: transparent;
+    }
+  }
+
+  /* RETRO SNES - Text blink for prompts */
+  --animate-text-blink: text-blink 1s steps(2, start) infinite;
+
+  @keyframes text-blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* RETRO SNES - Pixel sparkle */
+  --animate-pixel-sparkle: pixel-sparkle 1.2s steps(4) infinite;
+
+  @keyframes pixel-sparkle {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+    75% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+
+  /* RETRO SNES - Pokemon sprite bounce */
+  --animate-retro-bounce: retro-bounce 0.8s steps(4) infinite;
+
+  @keyframes retro-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
     }
   }
 
