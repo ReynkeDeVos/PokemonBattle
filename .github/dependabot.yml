@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - /Backend
+      - /Frontend
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0 # no routine version bumps, security updates only
+    groups:
+      security:
+        applies-to: security-updates
+        patterns: ["*"]
