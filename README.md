@@ -23,16 +23,16 @@ _Note: The backend is hosted on Render's free tier, so the first load might take
 ```sh
 # Backend
 cd Backend
-bun install
-bun run dev
+pnpm install
+pnpm dev
 
 # Frontend
 cd Frontend
-bun install
-bun run dev
+pnpm install
+pnpm dev
 ```
 
-The frontend talks to the deployed backend by default. To use your local one, start it with `VITE_API_URL=http://localhost:3000 bun run dev`.
+The frontend talks to the deployed backend by default. To use your local one, start it with `VITE_API_URL=http://localhost:3000 pnpm dev`.
 
 ## Project Structure
 
